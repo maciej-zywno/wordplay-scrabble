@@ -1,0 +1,156 @@
+@goodWord: hsl(120, 34%, 48%);
+@badWord: hsl(3, 60%, 46%);
+body {
+
+//    insync
+    background: url('https://d2t3ff60b2tol4.cloudfront.net/c/N/-tcIi7/furley_bg.png');
+    text-shadow: 1px 1px 1px white;
+    color: hsl(0, 0%, 20%);
+    font: 14px/21px 'Lato', Helvetica, sans-serif;
+
+    margin: 0px;
+    /*background-color: #f4f4f4;*/
+    font-family: Helvetica, Arial, sans-serif;
+
+    /* base styles */
+    #content{
+
+        margin-top: 20px;
+
+        input {
+            height: 50px;
+            width: 300px;
+            font-size: 2em;
+            padding: 5px;
+        }
+
+        button {
+            position: relative;
+        }
+
+        /*******/
+
+        #clock {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        #board {
+            table {
+                border-collapse: separate;
+                border-spacing: 5px;
+                table-layout: fixed;
+                border: 0px;
+                td {
+                    background-color: hsl(194, 21%, 75%);
+                    border-radius: 3px;
+                    font-size: 55px;
+                    text-align: center;
+                    width: 65px;
+                    height: 65px;
+                    padding: 10px;
+        //            margin-left: 2px !important;
+                }
+            }
+        }
+
+
+        .square.last_in_path {
+            color: #ff0000;
+        }
+
+        .square.in_path {
+            color: #990000;
+        }
+
+        #login {
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        #login .error {
+            color: red;
+        }
+
+        #lobby {
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        #postgame {
+            height: 100px;
+            text-align: center;
+        }
+
+        #scratchpad {
+//            height: 100px;
+        }
+
+        #scratchpad input {
+//            width: 50%;
+        }
+
+        #scratchpad h1 {
+//            float: left;
+        }
+
+        #scores {
+//            float: right;
+//            width: 100%;
+//            background-color: #eeeee8;
+//            border: 1px solid black;
+//            padding: 0.5em;
+        }
+
+        #scores .player {
+            float: left;
+            width: 100%;
+        }
+
+        #scores .header {
+            font-size: 1.25em;
+        }
+
+        #scores .unnamed {
+            color: #444;
+            font-style: italic;
+        }
+
+        #scores .winner {
+            background-color: yellow;
+        }
+
+        #scores .winner_text {
+            float: right;
+        }
+
+        #scores .word {
+            float: left;
+            font-size: 1.25em;
+            font-weight: bold;
+            padding: 0.05em 0.3em;
+            margin: 0.15em;
+            border-radius: 4px;
+            color: white
+        }
+
+        #scores .word.good {
+            background-color: @goodWord;
+            border: 1px solid @goodWord;
+        }
+
+        #scores .word.bad {
+            text-decoration: line-through;
+            background-color: @badWord;
+            border: 1px solid @badWord;
+        }
+
+        #scores .word span.score {
+            width: 1em;
+        }
+
+        #scores .word.bad span.score {
+            background-image: 'circle-ball-dark-antialiased.gif';
+        }
+    }
+}

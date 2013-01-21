@@ -1,0 +1,125 @@
+<head>
+  <title>Gra w słówka!</title>
+</head>
+
+<body>
+  {{> page}}
+</body>
+
+<template name="page">
+    <div id="main">
+        <div class="container">
+            <div id="content">
+                <div class="span12">
+                    <div class="span6">
+                      {{> board }}
+                    </div>
+                    <div class="span5">
+                      {{> lobby }}
+                      {{> scratchpad }}
+                      {{> postgame }}
+                      {{> scores }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="board">
+  <h2 id="clock">{{ clock }}</h2>
+  <div id="board">
+    <table class="board-table">
+        {{#each board_rows}}
+        <tr>
+          {{#each this}}
+            <td class="square {{ this.[0] }}">{{ this.[1] }}</td>
+          {{/each }}
+        </tr>
+    {{/each}}
+    </table>
+  </div>
+</template>
+
+<template name="lobby">
+  <div>
+    {{#if show }}
+    <div id="lobby">
+      <p class="lead" style="margin-bottom: 10px;">Twoje imię:</p>
+      <input id="myname" type="text" /><br/>
+      {{#if count}}
+      <p class="lead" style="margin-bottom: 0px;">Gracze:</p>
+      <ul class="unstyled" style="margin-bottom: 20px;">
+          {{#each waiting }}
+          <li class="player">{{name}}</li>
+          {{/each}}
+          {{/if}}
+      </ul>
+      <button id="startgame" class="startgame button btn btn-large btn-success" {{{disabled}}}>
+        {{#if count}} Gramy! {{else}} Graj samemu {{/if}}
+      </button>
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="scratchpad">
+  {{#if show}}
+  <div id="scratchpad">
+    <input id="scratchpad_input" type="text" />
+    <button name="submit" class="submit">Submit</button>
+  </div>
+  {{/if}}
+</template>
+
+<template name="postgame">
+  <div>
+    {{#if show}}
+    <div id="postgame">
+      <button name="backtolobby" class="lobby">Wróć</button>
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="scores">
+  <div>
+    {{#if show}}
+    <div id="scores">
+      {{#each players}}
+        {{> player }}
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="player">
+  <div class="player">
+    <div class="header {{winner}}">
+      {{#if name}}
+        {{name}}
+      {{else}}
+        <span class="unnamed">no name</span>
+      {{/if}}
+      <span class="score">{{total_score}}</span>
+      {{#if winner}}
+        <span class="winner_text">Winner!</span>
+      {{/if}}
+    </div>
+    {{> words}}
+  </div>
+</template>
+
+<template name="words">
+  <div class="words">
+    {{#each words}}
+    <div id="word_{{_id}}" class="word {{state}}">
+      <span class="score">
+        {{score}}
+      </span>
+      {{word}}
+    </div>
+    {{/each}}
+  </div>
+</template>
